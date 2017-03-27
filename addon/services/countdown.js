@@ -19,6 +19,10 @@ export default Ember.Service.extend({
   }),
 
   timePercentage: computed('elapsedTime', 'totalTime', function () {
+    const totalTime = get(this, 'totalTime');
+    if (totalTime == 0)
+      return 0;
+
     return get(this, 'elapsedTime') / get(this, 'totalTime');
   }),
 

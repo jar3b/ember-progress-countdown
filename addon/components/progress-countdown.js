@@ -6,6 +6,18 @@ export default Ember.Component.extend({
   countdown: Ember.inject.service(),
   totalTime: 180,
   tickInterval: 500,
+  started: false,
+
+  startedChanged: Ember.observer('started', function () {
+    const started = this.get('started');
+
+    if (started) {
+      this.get('countdown').start();
+    }
+    else {
+      this.get('countdown').stop();
+    }
+  }),
 
   timePercentage: Ember.computed.alias('countdown.timePercentage'),
 
