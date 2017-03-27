@@ -38,7 +38,7 @@ export default Ember.Component.extend({
 
   actions: {
     timerFinished(){
-      self.send('timerFinished');
+      this.sendAction('timerFinished');
     }
   }
 });
