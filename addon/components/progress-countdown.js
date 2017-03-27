@@ -19,6 +19,10 @@ export default Ember.Component.extend({
     }
   }),
 
+  totalTimeChanged: Ember.observer('totalTime', function () {
+    this.set('countdown.totalTime', this.get('totalTime'));
+  }),
+
   timePercentage: Ember.computed.alias('countdown.timePercentage'),
 
   didInsertElement(...args) {
@@ -30,7 +34,5 @@ export default Ember.Component.extend({
     this.set('countdown.onFinished', function () {
       self.sendAction('timerFinished');
     });
-
-    this.get('countdown').start();
   }
 });
