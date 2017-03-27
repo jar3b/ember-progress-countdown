@@ -7,6 +7,7 @@ export default Ember.Component.extend({
   totalTime: 180,
   tickInterval: 500,
   started: false,
+  timerFinished: null,
 
   startedChanged: Ember.observer('started', function () {
     const started = this.get('started');
